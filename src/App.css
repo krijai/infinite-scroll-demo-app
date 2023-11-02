@@ -1,38 +1,125 @@
-.App {
-  text-align: center;
-}
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css);
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
-.App-link {
-  color: #61dafb;
+.heading {
+  width: 80%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.paragraph {
+  width: 100%;
+}
+
+.repositoriesWrapper {
+  width: 80%;
+}
+
+.listItem {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.listItem:hover {
+  cursor: pointer;
+  background-color: gainsboro;
+}
+
+.repositoryName {
+  padding: 0 1rem;
+}
+
+/* Style for the accordion container */
+.accordion-container {
+  max-width: 80%;
+  /* Adjust the width as needed */
+  margin: 0 auto;
+}
+
+/* Style for each accordion item (question and answer) */
+.accordion-item {
+  border: 1px solid #ccc;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+
+/* Style for the question title */
+.accordion-title {
+  background-color: #f2f2f2;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  transition: all 0.35s ease;
+}
+
+/* Style for the active (expanded) question */
+.accordion-title.active {
+  background-color: #5a8dee;
+}
+
+/* Style for the arrow icon */
+.accordion-title .arrow {
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+/* Rotate the arrow icon when the question is active */
+.accordion-title.active .arrow {
+  transform: rotate(180deg);
+}
+
+/* Style for the answer content */
+.accordion-content {
+  text-align: left;
+  transition: all 0.5s ease;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 10px;
+}
+
+.accordion-content.active {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.rc-accordion-icon {
+  position: relative;
+  top: 2px;
+  color: #475F7B;
+  transition: 0.35s;
+  font-size: 12px;
+}
+
+.accordion-title.active .rc-accordion-icon {
+  transform: rotate(180deg);
+  color: #fff;
+}
+
+.accordion-title.active h5 {
+  color: #fff;
+}
+
+.ReactVirtualized__Table__row:nth-child(2n) {
+  background-color: #fafafa;
+}
+
+.ReactVirtualized__Table__row {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.ReactVirtualized__Table__headerRow {
+  border: 1px solid;
+  padding: 20px 0;
 }
