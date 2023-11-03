@@ -1,7 +1,7 @@
 const arrData = require('./usb_data.json')
 const express = require('express')
 const fs = require('fs');
-const interval = 100; // 100ms
+const interval = 200; // 100ms
 const duration = 60 * 60 * 1000; // 60 minutes
 const outputFile = 'usb_packets.json';
 const app = express()
@@ -31,7 +31,7 @@ app.listen(port, () => {
   console.log(`listening to port ${port}`)
 })
 
-const generateUSBPacket = () => {
+const generateUSBPacket = (index) => {
   const timestamp = new Date().toISOString();
   const packetName = 'PacketName'; // Generate your packet name
   const header = 'Header'; // Generate your header
@@ -44,7 +44,7 @@ const generateUSBPacket = () => {
   };
 
   const packet = {
-    timestamp: `${timestamp}`, packetName: `${packetName}`, header: `${header}`, payload: `${payload}`, error: `${error}`, rawData: `${rawData}`
+    Index: `${index}`, timestamp: `${timestamp}`, packetName: `${packetName} ${index}`, header: `${header}`, payload: `${payload}`, error: `${error}`, rawData: `${rawData}`
   };
 
   obj.table.push(packet);
@@ -57,9 +57,7 @@ const generateUSBPacket = () => {
   //     console.log("errr", err)
   //   }
   // });
-  console.log("generateUSBPacket func hittttttttt")
   fs.readFile('usb_data.json', 'utf8', (err, data) => {
-    console.log("readFile----- Hittttttttttt")
     if (err) {
       console.log(err);
     } else {
@@ -77,13 +75,17 @@ const generateUSBPacket = () => {
 
 const generatePackets = () => {
   const startTime = Date.now();
+  let index = 0;
   const intervalId = setInterval(() => {
     const currentTime = Date.now();
+    index = index + 1;
     if (currentTime - startTime < duration) {
 
-      generateUSBPacket();
+      generateUSBPacket(index);
     } else {
       clearInterval(intervalId);
     }
   }, interval);
 };
+
+// generatePackets()

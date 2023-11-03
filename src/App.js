@@ -8,6 +8,7 @@ import questions from './questions.json';
 import Accordion from './Accordion';
 import "react-virtualized/styles.css";
 import PaginationTable from "./PaginationTable";
+import FixedSizePacketTable from "./FixedSizePacketTable";
 
 export default function App() {
   const [pageCount, setPageCount] = useState(1);
@@ -67,6 +68,7 @@ export default function App() {
           <div><Link to="/">Home</Link></div>
           <div><Link to="/questions">Questions</Link></div>
           <div><Link to="/pagination">Pagination</Link></div>
+          <div><Link to="/fixed-size-packet-table">Fixed Size Packet Table</Link></div>
         </div>
 
         <Routes>
@@ -76,6 +78,7 @@ export default function App() {
           </div>} />
           <Route path="/questions" element={<><p className="paragraph">Questions and Answers</p> <Accordion questions={questions.questions} /></>} />
           <Route path="/pagination" element={<PaginationTable isRowLoaded={isRowLoaded} loadMoreRows={loadMoreRows} repositories={tableData} />} />
+          <Route path="/fixed-size-packet-table" element={<FixedSizePacketTable data={arrData.table} height={1200} itemSize={200} />} />
         </Routes>
       </BrowserRouter>
     </div >

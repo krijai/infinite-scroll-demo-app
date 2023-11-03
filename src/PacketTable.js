@@ -87,13 +87,14 @@ function PacketTable(props) {
                                     height={height}
                                     scrollTop={scrollTop}
                                     rowCount={sortedData.length}
-                                    rowHeight={120}
+                                    rowHeight={20}
                                     rowGetter={({ index }) => sortedData[index]}
                                     gridStyle={{ outline: "none" }}
                                     sort={sort}
                                     sortBy={sortBy}
                                     sortDirection={sortedDirection}
                                 >
+                                    <Column label="Index" dataKey="Index" width={200} headerRenderer={headerRenderer} />
                                     <Column label="Packet Name" dataKey="packetName" width={200} headerRenderer={headerRenderer} />
                                     <Column label="Header" dataKey="header" width={200} headerRenderer={headerRenderer} />
                                     <Column label="Payload" dataKey="payload" width={200} headerRenderer={headerRenderer} />

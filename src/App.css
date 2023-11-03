@@ -123,3 +123,50 @@
   border: 1px solid;
   padding: 20px 0;
 }
+
+.ListItemEven,
+.ListItemOdd {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.ListItemEven {
+  background-color: #f8f8f0;
+}
+
+table .headerRow {
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  text-align: left;
+}
+
+table .headerRow th {
+  display: inline-table;
+}
+
+.filterItemsWrapper button {
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.filterItemsWrapper .btnsWrapper {
+display: block;
+}
+
+.filterItemsWrapper button.lastRowBtn {
+  margin-top: 10px;
+}
+
+.summaryItemsWrapper {
+  display: flex;
+}
+
+.summaryItemsWrapper p {
+  margin-bottom: 5px;
+}
+
+.filterItemsWrapper p {
+  margin-bottom: 25px;
+}
