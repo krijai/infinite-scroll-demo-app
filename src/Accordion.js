@@ -12,9 +12,7 @@ function Accordion({ questions }) {
         <div className='accordion-container'>
 
             {questions && questions.map((question, index) => {
-                // console.log("Parsing test---------------", JSON.parse(question))
                 splitAnswers = question.answer.split("\n\n");
-                console.log("splitAnswers-----------------", splitAnswers)
                 return (
                     <div key={index} className="accordion-item">
                         <div
@@ -28,7 +26,7 @@ function Accordion({ questions }) {
                         <div className={`accordion-content ${index === activeIndex ? 'active' : ''}`} data-testid={`accordion-content-${index}`}>
                             {
                                 splitAnswers.map((item, index) => {
-                                    return <p>{item}</p>
+                                    return <p key={index}>{item}</p>
                                 })
                             }
 

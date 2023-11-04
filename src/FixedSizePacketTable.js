@@ -16,26 +16,12 @@ function FixedSizePacketTable({ data, itemSize }) {
 
     const handleScroll = ({ scrollOffset, scrollUpdateWasRequested }) => {
         // Calculate the start and end indices of the visible items based on the scroll offset and height
-        console.log("scrollOffset---------", scrollOffset, scrollUpdateWasRequested)
         const startIndex = Math.max(0, Math.floor(scrollOffset / 35));
         const endIndex = Math.min(data.length, startIndex + Math.ceil(500 / 35) + 1);
+
         setVisibleStartIndex(scrollOffset == 0 ? startIndex : startIndex + 2)
         setVisibleEndIndex(scrollOffset == 0 ? endIndex : endIndex - 1)
         setVerticalScrollValue(scrollOffset)
-        // Extract the visible data
-        const visibleItems = data.slice(startIndex, endIndex);
-        console.log("visibleItems------", visibleItems, startIndex, endIndex, data.length)
-        // Update the visible data
-        setVisibleData(visibleItems);
-
-        // Implement your logic to fetch data from the backend as the user scrolls
-        // Use startIndex and endIndex to determine which data to fetch and update 'visibleItems'
-
-        // If using gRPC, make a request with the range needed (startIndex to endIndex) to load additional data
-
-        // Ensure you add the new data to 'visibleItems' and update the state
-        // setVisibleData(updatedVisibleData);
-        // console.log("visibleData------", visibleData[0], data)
     };
 
     const Row = ({ index, style }) => {
@@ -87,22 +73,22 @@ function FixedSizePacketTable({ data, itemSize }) {
                 <div className="filterItemsWrapper">
                     <p><strong><i>Filter Options</i></strong></p>
                     <input type="number" placeholder={"Enter Row Number"} ref={inputRef} />
-                    <button onClick={scrollHandlerInput}>Submit</button>
+                    <button onClick={scrollHandlerInput} data-testid="submit-btn">Submit</button>
                     <div className='btnsWrapper'>
-                        <button className="lastRowBtn" onClick={scrollHandlerLastRow}>
+                        <button className="lastRowBtn" onClick={scrollHandlerLastRow} data-testid="scroll-to-last-row">
                             Scroll to last row
                         </button>
-                        <button className="lastRowBtn" onClick={scrollHandlerTopRow}>
+                        <button className="lastRowBtn" onClick={scrollHandlerTopRow} data-testid="scroll-to-top-row">
                             Scroll to Top row
                         </button>
                     </div>
                 </div>
                 <div className='summaryWrapper'>
                     <p><strong><i>Summary</i></strong></p>
-                    <h4>Total No of Rows: {data.length}</h4>
-                    <p>Visibile Row Starting Index: {visibleStartIndex}</p>
-                    <p>Visibile Row Ending Index: {visibleEndIndex}</p>
-                    <p>Vertical Scroll Value: {verticalScrollValue}</p>
+                    <h4 data-testid={`total-no-of-rows`}>Total No of Rows: {data.length}</h4>
+                    <p data-testid={`starting-index`}>Visibile Row Starting Index: {visibleStartIndex}</p>
+                    <p data-testid={`ending-index`}>Visibile Row Ending Index: {visibleEndIndex}</p>
+                    <p data-testid={`vertical-scroll-value`}>Vertical Scroll Value: {verticalScrollValue}</p>
                 </div>
             </div>
             <table>

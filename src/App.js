@@ -78,7 +78,7 @@ export default function App() {
           </div>} />
           <Route path="/questions" element={<><p className="paragraph">Questions and Answers</p> <Accordion questions={questions.questions} /></>} />
           <Route path="/pagination" element={<PaginationTable isRowLoaded={isRowLoaded} loadMoreRows={loadMoreRows} repositories={tableData} />} />
-          <Route path="/fixed-size-packet-table" element={<FixedSizePacketTable data={arrData.table} height={1200} itemSize={200} />} />
+          <Route path="/fixed-size-packet-table" element={<FixedSizePacketTable data={arrData.table}/>} />
         </Routes>
       </BrowserRouter>
     </div >

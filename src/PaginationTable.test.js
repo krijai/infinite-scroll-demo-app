@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import PaginationTable from './PaginationTable';
 
-test('Verifying Pagination async initial Page Load', async () => {
+test('Verifying Pagination async initial Page Load ', async () => {
     render(<PaginationTable />);
     await waitFor(() => {
         const tableDataFirstElement = screen.getByTestId('table-data-0');
