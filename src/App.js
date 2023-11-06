@@ -65,10 +65,14 @@ export default function App() {
       <BrowserRouter>
         <div className="heading">
           <h1>React Virtualized Infinite Scroll Demo</h1>
-          <div><Link to="/">Home</Link></div>
-          <div><Link to="/questions">Questions</Link></div>
-          <div><Link to="/pagination">Pagination</Link></div>
-          <div><Link to="/fixed-size-packet-table">Fixed Size Packet Table</Link></div>
+          <nav>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/questions">Questions</Link></li>
+              <li><Link to="/pagination">Pagination</Link></li>
+              <li><Link to="/fixed-size-packet-table">Fixed Size Packet Table</Link></li>
+            </ul>
+          </nav>
         </div>
 
         <Routes>

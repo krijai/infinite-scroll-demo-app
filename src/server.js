@@ -31,7 +31,7 @@ app.listen(port, () => {
   console.log(`listening to port ${port}`)
 })
 
-const generateUSBPacket = (index) => {
+const generatePackets = () => {
   const timestamp = new Date().toISOString();
   const packetName = 'PacketName'; // Generate your packet name
   const header = 'Header'; // Generate your header
@@ -42,28 +42,20 @@ const generateUSBPacket = (index) => {
   var obj = {
     table: []
   };
-
-  const packet = {
-    Index: `${index}`, timestamp: `${timestamp}`, packetName: `${packetName} ${index}`, header: `${header}`, payload: `${payload}`, error: `${error}`, rawData: `${rawData}`
-  };
-
-  obj.table.push(packet);
+  
+  for (let i = 1; i <= 100000; i++) {
+    const packet = {
+      Index: `${i}`, timestamp: `${timestamp}`, packetName: `${packetName} ${i}`, header: `${header}`, payload: `${payload}`, error: `${error}`, rawData: `${rawData}`
+    };
+    obj.table.push(packet);
+  }
 
   var json = JSON.stringify(obj);
 
-
-  // fs.writeFile('usb_data.json', json, 'utf8', err => {
-  //   if (err) {
-  //     console.log("errr", err)
-  //   }
-  // });
   fs.readFile('usb_data.json', 'utf8', (err, data) => {
     if (err) {
       console.log(err);
     } else {
-      obj = JSON.parse(data); //now it an object
-      obj.table.push(packet); //add some data
-      json = JSON.stringify(obj); //convert it back to json
       fs.writeFile('usb_data.json', json, 'utf8', err => {
         if (err) {
           console.log("errr", err)
@@ -71,21 +63,6 @@ const generateUSBPacket = (index) => {
       }); // write it back 
     }
   });
-};
-
-const generatePackets = () => {
-  const startTime = Date.now();
-  let index = 0;
-  const intervalId = setInterval(() => {
-    const currentTime = Date.now();
-    index = index + 1;
-    if (currentTime - startTime < duration) {
-
-      generateUSBPacket(index);
-    } else {
-      clearInterval(intervalId);
-    }
-  }, interval);
 };
 
 // generatePackets()
